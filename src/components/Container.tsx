@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
+import { trpc } from "@/app/_trpc/client";
 
 type NavItemProps = {
   href: string;
@@ -70,7 +71,7 @@ export default function Container(props: ContainerProps) {
       />
       <div className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col justify-center px-8">
-          <nav className="relative mx-auto flex w-full max-w-2xl items-center justify-between border-gray-200 bg-gray-50 bg-opacity-60 pb-8 pt-8  text-gray-900 dark:border-gray-700  dark:bg-gray-900 dark:text-gray-100 sm:pb-16">
+          <nav className="relative mx-auto flex w-full max-w-4xl items-center justify-between border-gray-200 bg-gray-50 bg-opacity-60 pb-8 pt-8  text-gray-900 dark:border-gray-700  dark:bg-gray-900 dark:text-gray-100 sm:pb-16">
             <Link href="#skip" className="skip-nav" legacyBehavior>
               Skip to content
             </Link>
@@ -81,7 +82,7 @@ export default function Container(props: ContainerProps) {
             <button
               aria-label="Toggle Dark Mode"
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200 ring-gray-300  transition-all hover:ring-2  dark:bg-gray-600"
+              className="ml-4 flex h-9 w-9 items-center justify-center rounded-lg bg-gray-200  ring-gray-300 transition-all  hover:ring-2 dark:bg-gray-600"
               onClick={() =>
                 setTheme(resolvedTheme === "dark" ? "light" : "dark")
               }
